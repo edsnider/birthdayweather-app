@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirthdayWeather.iOS", "Birt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirthdayWeather", "BirthdayWeather\BirthdayWeather.csproj", "{3F150249-DA40-40D3-8603-65811CB35886}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F4239926-8A81-4567-B170-61C24F99BC7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirthdayWeather.Tests", "Tests\BirthdayWeather.Tests\BirthdayWeather.Tests.csproj", "{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,5 +70,24 @@ Global
 		{3F150249-DA40-40D3-8603-65811CB35886}.Ad-Hoc|iPhone.Build.0 = Debug|Any CPU
 		{3F150249-DA40-40D3-8603-65811CB35886}.AppStore|iPhone.ActiveCfg = Debug|Any CPU
 		{3F150249-DA40-40D3-8603-65811CB35886}.AppStore|iPhone.Build.0 = Debug|Any CPU
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}.Release|iPhone.Build.0 = Release|Any CPU
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32}.AppStore|iPhone.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F8F305EC-E8D5-41F6-8827-3F5F3055CB32} = {F4239926-8A81-4567-B170-61C24F99BC7B}
 	EndGlobalSection
 EndGlobal
