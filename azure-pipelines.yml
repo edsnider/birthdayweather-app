@@ -1,0 +1,100 @@
+name: $(buildid)
+
+trigger:
+- master
+
+jobs:
+
+- job: 'UnitTests'
+  pool:
+    vmImage: vs2017-win2016
+
+  variables:
+    buildConfiguration: 'Debug'
+    buildPlatfirm: 'Any CPU'
+
+  steps:
+  - task: NuGetToolInstaller@0
+
+  - task: NuGetCommand@2
+    inputs:
+      restoreSolution: '**/*.sln'
+
+  - task: MSBuild@1
+    inputs:
+      solution: '**/*.Tests.csproj'
+      configuration: '$(buildConfiguration)'
+      msbuildArguments: '/p:OutputPath="$(build.binariesdirectory)/$(BuildConfiguration)/test-assembly"'
+
+  - task: VSTest@2
+    inputs:
+      testAssemblyVer2: '**/*.Tests.dll'
+      searchFolder: '$(build.binariesdirectory)/$(BuildConfiguration)/test-assembly'
+      platform: '$(buildPlatform)'
+      configuration: '$(buildConfiguration)'
+      codeCoverageEnabled: true
+
+- job: Android
+  dependsOn: UnitTests
+  pool:
+    vmImage: 'macOS 10.13'
+
+  variables:
+    buildConfiguration: 'Release'
+    outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
+
+  steps:
+  - task: NuGetToolInstaller@0
+
+  - task: NuGetCommand@2
+    inputs:
+      restoreSolution: '**/*.sln'
+
+  - task: XamarinAndroid@1
+    inputs:
+      projectFile: '**/*droid*.csproj'
+      outputDirectory: '$(outputDirectory)'
+      configuration: '$(buildConfiguration)'
+
+- job: iOS
+  dependsOn: UnitTests
+  pool:
+    vmImage: 'macOS 10.13'
+
+  variables:
+    buildConfiguration: 'Release'
+
+  steps:
+  - bash: '/usr/libexec/PlistBuddy -c "set :CFBundleVersion $BUILD_BUILDID" "$BUILD_SOURCESDIRECTORY/BirthdayWeather/BirthdayWeather.iOS/Info.plist"' 
+    displayName: 'Bump build number'
+
+  - task: NuGetToolInstaller@0
+
+  - task: NuGetCommand@2
+    inputs:
+      restoreSolution: '**/*.sln'
+
+  - task: InstallAppleProvisioningProfile@1
+    inputs:
+      provProfileSecureFile: '71e58ffe-cfe9-4c9b-b3d2-5984c893bab2'
+
+  - task: InstallAppleCertificate@2
+    inputs:
+      certSecureFile: '710eb1ee-c32a-440e-8599-5e9297ea5dca'
+
+  - task: XamariniOS@2
+    inputs:
+      solutionFile: '**/*.sln'
+      configuration: '$(buildConfiguration)'
+      buildForSimulator: false
+      packageApp: true
+
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '$(system.defaultworkingdirectory)'
+      Contents: '**/*.ipa'
+      TargetFolder: '$(build.artifactstagingdirectory)'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)'
