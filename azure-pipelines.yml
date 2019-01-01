@@ -76,11 +76,11 @@ jobs:
 
   - task: InstallAppleProvisioningProfile@1
     inputs:
-      provProfileSecureFile: '71e58ffe-cfe9-4c9b-b3d2-5984c893bab2'
+      provProfileSecureFile: 'e8e96e88-0a8e-4661-a5da-be8361006ab9'
 
   - task: InstallAppleCertificate@2
     inputs:
-      certSecureFile: '710eb1ee-c32a-440e-8599-5e9297ea5dca'
+      certSecureFile: 'e68f59dd-6940-4004-9cea-baaf4c4709f7'
 
   - task: XamariniOS@2
     inputs:
