@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using BirthdayWeather.ViewModels;
+using BirthdayWeather.Services;
 
 namespace BirthdayWeather.Views
 {
@@ -12,7 +13,7 @@ namespace BirthdayWeather.Views
         {
             InitializeComponent();
 
-            BindingContext = new MainViewModel();
+            BindingContext = new MainViewModel(DependencyService.Get<ILocationService>(), DependencyService.Get<IWeatherService>());
         }
     }
 }
