@@ -161,4 +161,9 @@
       <Name>BirthdayWeather</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\baby.png" />
+    <BundleResource Include="Resources\baby%402x.png" />
+    <BundleResource Include="Resources\baby%403x.png" />
+  </ItemGroup>
 </Project>

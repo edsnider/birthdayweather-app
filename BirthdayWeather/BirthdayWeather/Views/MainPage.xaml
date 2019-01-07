@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:BirthdayWeather.Views" 
+             x:Class="BirthdayWeather.Views.MainPage"
+             Title="Birthday Weather">
+    <StackLayout VerticalOptions="FillAndExpand">
+        <Image Source="baby.png" Margin="40" />
+        <DatePicker Date="{Binding Birthday}" Margin="20" />
+        <Label Text="Enter your birthday to see what the weather was like when you were born." TextColor="Gray" Margin="26,0" />
+        <Button Text="Check Weather" Command="{Binding GetWeatherCommand}" BackgroundColor="Purple" TextColor="White" Margin="20" />
+    </StackLayout>
+</ContentPage>

@@ -1,17 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
+using BirthdayWeather.ViewModels;
 
-namespace BirthdayWeather
+namespace BirthdayWeather.Views
 {
     public partial class MainPage : ContentPage
     {
+        MainViewModel _vm => BindingContext as MainViewModel;
+
         public MainPage()
         {
             InitializeComponent();
+
+            BindingContext = new MainViewModel();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using BirthdayWeather.Views;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace BirthdayWeather
@@ -11,7 +12,7 @@ namespace BirthdayWeather
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
