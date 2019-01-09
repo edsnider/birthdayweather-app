@@ -15,5 +15,10 @@ namespace BirthdayWeather.Views
 
             BindingContext = new MainViewModel(DependencyService.Get<ILocationService>(), DependencyService.Get<IWeatherService>());
         }
+
+        void DarkSkyLinkClicked(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri("https://darksky.net/poweredby/"));
+        }
     }
 }
