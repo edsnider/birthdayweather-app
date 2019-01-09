@@ -4,10 +4,13 @@
              xmlns:local="clr-namespace:BirthdayWeather.Views" 
              x:Class="BirthdayWeather.Views.MainPage"
              Title="Birthday Weather">
-    <StackLayout VerticalOptions="FillAndExpand">
-        <Image Source="baby.png" Margin="40" />
-        <DatePicker Date="{Binding Birthday}" Margin="20" />
-        <Label Text="Enter your birthday to see what the weather was like when you were born." TextColor="Gray" Margin="26,0" />
-        <Button Text="Check Weather" Command="{Binding GetWeatherCommand}" BackgroundColor="Purple" TextColor="White" Margin="20" />
-    </StackLayout>
+    <ScrollView>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Image Source="baby.png" Margin="40" />
+            <DatePicker Date="{Binding Birthday}" Margin="20,20,20,0" />
+            <Label Text="Enter your birthday to see what the weather was like when you were born." FontSize="10" TextColor="Gray" Margin="26,0" />
+            <Label Text="{Binding CurrentForecast.Current.TempAndSummary}" FontSize="36" HorizontalOptions="Center" Margin="20,20,20,0" />
+            <Button Text="Check Weather" Command="{Binding GetWeatherCommand}" BackgroundColor="Purple" TextColor="White" Margin="20" />
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

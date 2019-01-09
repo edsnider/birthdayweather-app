@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using BirthdayWeather.Services;
+using BirthdayWeather.Models;
 
 namespace BirthdayWeather.ViewModels
 {
@@ -22,6 +23,17 @@ namespace BirthdayWeather.ViewModels
             }
         }
 
+        Forecast _currentForecast;
+        public Forecast CurrentForecast
+        {
+            get => _currentForecast;
+            set
+            {
+                _currentForecast = value;
+                OnPropertyChanged();
+            }
+        }
+
         public Command GetWeatherCommand { get; }
 
         public MainViewModel(ILocationService locationService, IWeatherService weatherService)
@@ -36,7 +48,7 @@ namespace BirthdayWeather.ViewModels
         async Task GetWeather()
         {
             var location = await _locationService.GetLocationAsync();
-            var forecast = await _weatherService.GetWeatherAsync(location.Latitude, location.Longitude, Birthday);
+            CurrentForecast = await _weatherService.GetWeatherAsync(location.Latitude, location.Longitude, Birthday);
         }
 
         bool CanGetWeather() => Birthday.Date < DateTime.Today;

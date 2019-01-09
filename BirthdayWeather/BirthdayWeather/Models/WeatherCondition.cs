@@ -8,5 +8,6 @@ namespace BirthdayWeather.Models
         public double Temperature { get; set; }
         public string Summary { get; set; }
         public string IconName { get; set; }
+        public string TempAndSummary => $"{Temperature:0}˚ {Summary}";
     }
 }
